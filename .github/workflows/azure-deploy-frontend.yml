@@ -1,0 +1,59 @@
+# This workflow builds the Angular frontend and deploys it to an Azure Web App
+# (Windows App Service, static files served by IIS using frontend/src/web.config
+# for SPA routing).
+
+name: Frontend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/azure-deploy-frontend.yml'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  # TODO: set to the frontend Web App name you create in Azure
+  frontend-app-name: your-frontend-webapp-name
+  AZURE_WEBAPP_PACKAGE_PATH: frontend/dist
+
+jobs:
+  deploy_frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required secrets/variables are set
+        run: |
+          [ -z "${{ secrets.FRONTEND_AZURE_WEBAPP_PUBLISH_PROFILE }}" ] && echo "::error::FRONTEND_AZURE_WEBAPP_PUBLISH_PROFILE secret is missing/empty" || echo "FRONTEND_AZURE_WEBAPP_PUBLISH_PROFILE is set"
+          [ -z "${{ vars.BACKEND_API_URL }}" ] && echo "::error::BACKEND_API_URL repo variable is missing/empty" || echo "BACKEND_API_URL is set to ${{ vars.BACKEND_API_URL }}"
+
+      - name: Setup Node.js and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Point the build at the deployed backend
+        working-directory: frontend
+        run: sed -i "s#__BACKEND_API_URL__#${{ vars.BACKEND_API_URL }}#" src/environments/environment.prod.ts
+
+      - name: Build Prod
+        working-directory: frontend
+        run: npm run build:prod
+
+      - name: Deploy Frontend
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.frontend-app-name }}
+          publish-profile: ${{ secrets.FRONTEND_AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

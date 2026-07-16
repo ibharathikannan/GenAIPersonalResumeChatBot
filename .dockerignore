@@ -68,10 +68,8 @@ experiments\.logfire
 # Pytest
 .pytest_cache/
 
-# Frontend (already covered by the generic node_modules/ and dist/ rules above,
-# listed for clarity since these are the paths that actually matter here)
-frontend/.angular/
-frontend/.env
+# Frontend is deployed separately (its own App Service, not this image)
+frontend/
 
 shopenv/
 

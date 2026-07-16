@@ -1,0 +1,57 @@
+# This workflow builds the FastAPI backend and deploys it to an Azure Web App
+# (Linux App Service, Python runtime). Secrets (MONGO_URI, GROQ_API_KEY,
+# LOGFIRE_API_KEY, FRONTEND_ORIGIN) are NOT set here — they live as
+# Application Settings on the Web App itself, and main.py/backend/database.py
+# read them via os.getenv(...) at runtime, same as a local .env file would.
+
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - 'main.py'
+      - 'requirements.txt'
+      - '.github/workflows/azure-deploy-backend.yml'
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  # TODO: set to the backend Web App name you create in Azure
+  backend-app-name: your-backend-webapp-name
+  AZURE_WEBAPP_PACKAGE_PATH: backend_deploy_package
+
+jobs:
+  deploy_backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check required secrets are set
+        run: |
+          [ -z "${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE }}" ] && echo "::error::BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE secret is missing/empty" || echo "BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE is set"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Assemble deploy package
+        run: |
+          mkdir -p ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          cp main.py requirements.txt ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/
+          cp -r backend ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/backend
+
+      - name: Deploy Backend
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.backend-app-name }}
+          publish-profile: ${{ secrets.BACKEND_AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

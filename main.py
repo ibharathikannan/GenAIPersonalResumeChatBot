@@ -9,13 +9,15 @@ import logfire
 # Initialize FastAPI app
 app = FastAPI()
 
-# Allow the Angular dev server to call this API directly. `ng serve` can
-# land on different ports (4200 default, 4300/4400 if that's taken), so
-# rather than chase exact ports, allow any localhost/127.0.0.1 origin here.
-# In production the frontend is served by this same app (see the static
-# mount below), so same-origin requests don't need CORS at all.
+# The frontend is deployed as a separate Azure App Service, so every request
+# it makes is cross-origin. FRONTEND_ORIGIN is set as an App Setting on the
+# backend App Service to that deployed URL (comma-separate for more than one).
+# The localhost regex covers `ng serve`, which can land on different ports
+# (4200 default, 4300/4400 if that's taken).
+_frontend_origins = [o.strip() for o in os.getenv("FRONTEND_ORIGIN", "").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=_frontend_origins,
     allow_origin_regex=r"http://(localhost|127\.0\.0\.1):\d+",
     allow_credentials=True,
     allow_methods=["*"],
@@ -47,14 +49,6 @@ app.include_router(profile.router)
 # Serve uploaded files statically
 from fastapi.staticfiles import StaticFiles
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
-
-
-# Serve the Angular production build natively, if it's been built.
-# For local development, run `ng serve` separately instead (see README) —
-# CORS above makes that work against this same backend.
-FRONTEND_DIST = os.path.join("frontend", "dist")
-if os.path.isdir(FRONTEND_DIST):
-    app.mount("/", StaticFiles(directory=FRONTEND_DIST, html=True), name="frontend")
 
 if __name__ == "__main__":
     print("⚙️ Starting backend server (FastAPI)...")

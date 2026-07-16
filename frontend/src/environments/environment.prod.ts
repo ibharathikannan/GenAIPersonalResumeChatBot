@@ -7,7 +7,9 @@ export const environment = {
   test: false,
   i18nPrefix: '',
   apiUrl: 'https://sg-sesp-ses-appointment-api-11580-prod.azurewebsites.net/',
-  chatApiUrl: 'https://your-chat-api-prod.azurewebsites.net',
+  // Replaced at CI build time (see .github/workflows/azure-deploy-frontend.yml)
+  // with the deployed backend App Service URL, from the BACKEND_API_URL repo variable.
+  chatApiUrl: '__BACKEND_API_URL__',
   collectionDate: new Date("2021-10-01"),
   collectionDayCount: 41,
   versions: {
