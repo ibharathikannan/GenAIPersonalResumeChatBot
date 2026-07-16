@@ -6,6 +6,7 @@ python-dotenv
 # backend
 fastapi
 uvicorn
+gunicorn
 jinja2
 python-multipart
 
