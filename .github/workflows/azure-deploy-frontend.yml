@@ -41,7 +41,10 @@ jobs:
 
       - name: Install dependencies
         working-directory: frontend
-        run: npm ci
+        # --legacy-peer-deps: @fortawesome/angular-fontawesome@0.11.1 only declares
+        # an Angular ^14 peer dep, but this project is on Angular 18. The resolution
+        # works fine in practice; strict npm ci just refuses it without this flag.
+        run: npm ci --legacy-peer-deps
 
       - name: Point the build at the deployed backend
         working-directory: frontend
