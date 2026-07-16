@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+@mixin eus-confirmation-dialog-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+
+  eus-confirmation-dialog {
+    .title-icon{
+      color: mat.m2-get-color-from-palette($accent);
+    }
+  }
+}

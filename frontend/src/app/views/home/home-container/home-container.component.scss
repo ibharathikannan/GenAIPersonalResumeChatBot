@@ -1,0 +1,684 @@
+:host {
+  display: block;
+}
+
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #d1fae5 0%, #ecfeff 45%, #e0f2fe 100%);
+  font-family: 'Baloo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+  overflow-x: hidden;
+}
+
+.top-nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.brand-title {
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.nav-ai-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.contact-btn {
+  background: linear-gradient(135deg, #16a34a, #0ea5e9);
+  color: #fff;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 12.5px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// ---- Hero ----
+
+.hero {
+  flex: 0 0 auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr 1fr;
+  align-items: center;
+  gap: 24px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 32px 32px;
+}
+
+.hero-copy {
+  min-width: 0;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 22px;
+  padding: 18px 24px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+
+  h1 {
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 0 0 6px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #16a34a, #0ea5e9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .tagline {
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0 0 10px;
+  }
+
+  .contact-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 14px;
+
+    span {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+  }
+}
+
+// ---- AI CTA (hero) — the differentiator, made loud on purpose ----
+
+.ai-cta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #6366f1, #a855f7, #0ea5e9);
+  background-size: 200% 200%;
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(99, 102, 241, 0.4);
+  animation: ctaGradient 5s ease infinite, ctaPulse 2.6s ease-in-out infinite;
+  transition: transform 0.15s ease;
+  text-align: left;
+
+  &:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+@keyframes ctaGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 10px 26px rgba(99, 102, 241, 0.4); }
+  50% { box-shadow: 0 10px 34px rgba(168, 85, 247, 0.6); }
+}
+
+.ai-cta-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.ai-cta-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+
+  strong {
+    font-size: 14.5px;
+    font-weight: 800;
+  }
+
+  small {
+    font-size: 11px;
+    opacity: 0.9;
+    font-weight: 600;
+  }
+}
+
+.ai-cta-arrow {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.hero-avatar-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 1;
+  min-width: 0;
+}
+
+.hero-avatar {
+  width: 260px;
+  max-width: 100%;
+  // Fixed aspect-ratio (not height: auto) so the box has its final size
+  // immediately from CSS alone, before the image has even started
+  // downloading — the three.js badge canvas behind it reads this box's
+  // size on init, and computing an orbit from a collapsed 0-height box
+  // (which only self-corrects once the image loads, if something notices)
+  // is what made badges disappear/shrink to a sliver before this fix.
+  aspect-ratio: 1.17;
+  height: auto;
+  border-radius: 24px;
+  filter: drop-shadow(0 14px 24px rgba(14, 165, 233, 0.28));
+  animation: bob 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-avatar-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 26px;
+  background: conic-gradient(from 0deg, #16a34a, #0ea5e9, #a855f7, #16a34a);
+  opacity: 0.35;
+  filter: blur(16px);
+  animation: spinGlow 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spinGlow {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+// ---- Hero's third column: dedicated 3D tech-stack badges ----
+
+.hero-3d-col {
+  position: relative;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+// ---- Tabbed content: Education / Skills / Services / Projects ----
+
+.content-tabs {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 8px 32px 0;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    background: rgba(255, 255, 255, 0.6);
+    color: #4b5563;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #16a34a, #0ea5e9);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+    }
+  }
+}
+
+.tab-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 16px 20px;
+}
+
+// ---- Education timeline (vertical roadmap: bachelor's → master's) ----
+
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-left: 4px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 23px;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    background: linear-gradient(180deg, #16a34a, #0ea5e9, #a855f7);
+    border-radius: 3px;
+  }
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.timeline-icon {
+  font-size: 20px;
+}
+
+.timeline-card {
+  flex: 1;
+  min-width: 0;
+  padding-top: 6px;
+}
+
+.timeline-degree {
+  font-weight: 800;
+  font-size: 14.5px;
+  color: #1f2937;
+  line-height: 1.3;
+}
+
+.timeline-institution {
+  font-weight: 700;
+  font-size: 12px;
+  color: #16a34a;
+  margin-top: 3px;
+}
+
+.timeline-description {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4b5563;
+}
+
+// ---- Skills (compact chips, grouped) ----
+
+.skills-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skill-group {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.skill-group-title {
+  flex: 0 0 130px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #0ea5e9;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+}
+
+.chip {
+  --tile-color: #6366f1;
+  background: #fff;
+  border: 2px solid var(--tile-color);
+  color: #1f2937;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  cursor: default;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.15s ease;
+
+  &:hover {
+    background: var(--tile-color);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+// ---- Projects ----
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: #6366f1;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-icon {
+  font-size: 18px;
+}
+
+.project-name {
+  font-weight: 800;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.project-description {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #4b5563;
+}
+
+.tech-chip {
+  --tile-color: #0ea5e9;
+  font-size: 10.5px;
+  padding: 3px 10px;
+  cursor: default;
+}
+
+.project-link {
+  align-self: flex-start;
+  margin-top: auto;
+  font-size: 12px;
+  font-weight: 800;
+  color: #6366f1;
+  text-decoration: none;
+  padding: 5px 0;
+  transition: transform 0.15s ease;
+
+  &:hover {
+    transform: translateX(2px);
+    text-decoration: underline;
+  }
+}
+
+// ---- Services (reuse compact tile grid) ----
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  --tile-color: #6366f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+
+  &:hover {
+    transform: translateY(-4px) scale(1.03);
+    border-color: var(--tile-color);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  }
+
+  img {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  span {
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+// ---- Footer ----
+
+.home-footer {
+  flex: 0 0 auto;
+  max-width: 1200px;
+  width: 100%;
+  margin: 8px auto 0;
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer-links {
+  display: flex;
+  gap: 14px;
+
+  a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+
+    &:hover {
+      color: #374151;
+    }
+  }
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+
+  a {
+    color: #16a34a;
+    font-size: 16px;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.footer-copyright {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+}
+
+// ---- Scroll reveal ----
+
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 700px) {
+  .top-nav {
+    padding: 8px 14px;
+  }
+
+  .nav-ai-btn .nav-ai-btn-label {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 16px 16px;
+  }
+
+  .hero-avatar {
+    width: 150px;
+  }
+
+  .hero-3d-col {
+    min-height: 180px;
+  }
+
+  .content-tabs {
+    padding: 8px 14px 0;
+  }
+
+  .timeline-marker {
+    width: 38px;
+    height: 38px;
+  }
+
+  .timeline::before {
+    left: 18px;
+  }
+
+  .skill-group {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .skill-group-title {
+    flex: none;
+  }
+
+  .tab-panel {
+    max-height: none;
+  }
+}

@@ -1,0 +1,124 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+    <header class="py-3">
+        <img
+            src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+    </header>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="container-banner">
+            <div class="header-text">
+                <h2 class="subhead">Samsung Experience Store</h2>
+                <h1 class="headline" #target2>Samsung Live Space</h1>
+            </div>
+            <div class="banner-place hidden-xs">
+                <img src="../../../../assets/banners/Main-Banner-PC-opaque.jpg" alt="">
+            </div>
+            <div class="banner-place hidden-lg hidden-md hidden-sm">
+                <img class="banner-mob" src="../../../../assets/banners/Main-Banner-MO-opaque.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="white-bg-main container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-8" *ngIf="(booking$ | async)">
+                <div class="mt-5" *ngIf="(booking$ | async).status === 1">
+                    <div class="alert alert-success mx-3" role="alert">
+                        <p class="note-appointment text-center">Booking Reference ID: <b>{{(booking$
+                            | async).refNumber}}</b>
+                        </p>
+                    </div>
+                   
+                    <br />
+
+                    <div class="text-center">
+                        <h4> Good day {{(booking$ | async).firstName}}
+                            {{(booking$ | async).lastName}}!</h4>
+                    </div>
+                    <div class="text-center">
+                        <p class="note text-center">Your Booking Appointment details.</p>
+                    </div>
+                    <br />
+                </div>
+
+                <div class="mt-5" *ngIf="(booking$ | async).status==2">
+                    <div class="text-center">
+                        <h4 class="alert-heading text-center">Your appointment has been cancelled</h4>
+                    </div>
+                    <div class="alert alert-success text-center mt-3 mx-3">
+                        <p class="note my-1">Booking Reference ID: <b>{{(booking$ | async).refNumber}}</b></p>
+                    </div>
+                    <br />
+                </div>
+                <!-- <div *ngIf="(booking$ | async).product.category != 'APPOINTMENT TYPE'">
+                    <div class="store col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                        style="border-top:1px solid rgba(0, 0, 0, 0.04);">
+                        <p class="note"><b>Booking Type:</b></p>
+                        <p class="note"> PRODUCT DEMO</p>
+                        <p class="note"> {{(booking$ | async).product.description}}</p>
+                    </div>
+                    <div class="store col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                        style="border-top:1px solid rgba(0, 0, 0, 0.04);">
+                        <p class="note"><b>Product:</b></p>
+                        <p class="note"> {{(booking$ | async).product.name}}</p>
+                        <p class="note"> {{(booking$ | async).product.description}}</p> 
+                    </div>
+                </div> -->
+                <br />
+                <div class="store col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                    <p class="note"><b>Store Location:</b></p>
+                    <p class="note my-0"> {{ booking.store.name }}</p>
+                    <p class="note my-0"> {{ booking.store.addressLine1 }}</p>
+                    <p class="note my-0"> {{ booking.store.addressLine2 }}</p>
+                </div>
+                <div class="store col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <p class="note"><b>Appointment Date:</b></p>
+                    <p class="note my-0"> {{ (booking$ | async).expiredDateTime | date:'dd MMM yyyy'}}
+                        <span *ngIf="(booking$ | async).timeSlot != null">
+                            , {{ (booking$ | async).timeSlot.startDateTime | date:'shortTime'}}
+                        </span>
+                    </p>
+                </div>
+                <br />
+                <div class="btn-wrap col-lg-12 col-md-12 col-sm-12 col-xs-12 mx-3"
+                    style="border-top: 1px solid rgba(0, 0, 0, 0.04); margin-top:40px; padding-top: 40px;">
+                    <div class="col-12" align="center">
+                        <button class="btn-default" mat-stroked-button (click)="cancelBooking()"
+                            *ngIf="(booking$ | async).status==1">
+                            CANCEL BOOKING
+                        </button>
+                    </div>
+                    <!--
+                    <div class="store col-6" align="right">
+                        <button mat-stroked-button [routerLink]="['/register']">
+                            CLOSE WINDOW
+                        </button>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="col-md-8 my-5" *ngIf="!(booking$ | async)">
+                <div class="alert alert-danger mx-3" role="alert" *ngIf="!(booking$ | async)">
+                    <h4 class="alert-heading text-center">
+                        <mat-icon fontIcon="warning" class="icon-alert-l"></mat-icon>
+                    </h4>
+                    <h5 class="text-center mt-2">{{bookingRef}} is not a valid Booking reference number.</h5>
+                </div>
+                <p class="text-center mx-3 mt-5"><strong>{{ 'eus.booking.instructionLine3' | translate }}</strong></p>
+                <div class="wrapper btn-wrap mt-2  mx-3">
+                    <button class="centeredButton btn-default" mat-stroked-button (click)="bookNow()">
+                      {{ 'Book Now' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--row-->
+    <footer class="pt-3 mt-4 text-muted border-top">
+        <div class="px-3">
+            Copyright© 1995-2024 Samsung. All rights reserved.
+        </div>
+    </footer>
+</div>

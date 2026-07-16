@@ -1,0 +1,77 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+    <header class="py-3">
+        <img src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+    </header>
+  </div>
+<div class="container">
+    <div class="container-banner">
+        <div class="header-text">
+          <h1 class="headline">Samsung Experience Store<br>Appointment Service</h1>
+          <h2 class="subhead">Samsung Live Space, Switch Programme or Trade-in</h2>
+         
+        </div>
+        <div class="banner-place hidden-xs">
+          <img src="../../../../assets/banners/Main-Banner-PC-opaque.jpg" alt="">
+        </div>
+        <div class="banner-place hidden-lg hidden-md hidden-sm">
+          <img class="banner-mob" src="../../../../assets/banners/Main-Banner-MO-opaque.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="main col-12">
+        <div class="bodyWrapper" *ngIf="(booking$ | async) != null">
+            <h2 class="thank-you text-center mb-4">Thank you!</h2>
+            <h3 class="text-center">Your appointment has been booked</h3>
+
+            <div class="text-center bg-grey">
+                <p class="note-booking-reference"><b>Booking Reference ID: {{(booking$ | async).refNumber}}</b></p>
+            </div>
+            <br/>
+            <br/>
+            <!-- <div class="col-12">
+                <p class="note"> {{(booking$ | async).product.name}}</p>
+                <p> {{(booking$ | async).product.description}}</p>
+            </div> -->
+
+            <div class="store col-lg-8 col-md-8 col-sm-8 col-xs-12 mb-5">
+                <p class="note-thank-you"><b>Store Location:</b></p>
+                <p class="note-thank-you"> {{ booking.store.name }}</p>
+                <p class="note-thank-you"> {{ booking.store.addressLine1 }}</p>
+                <p class="note-thank-you"> {{ booking.store.addressLine2 }}</p>
+            </div>
+
+            <div class="store col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <p class="note-thank-you"><b>Date of Appointment:</b></p>
+                <p class="note-thank-you">{{ (booking$ | async).expiredDateTime | date:'dd MMM yyyy'}}, {{ (booking$ | async).timeSlot.startDateTime | date:'shortTime'}}</p>
+            </div>
+            
+        </div>
+
+        <div class="bodyWrapper" *ngIf="(stockAlert$ | async) != null && (stockAlert$ | async).product != null">
+            <h1 class="textcenter">Thank you for your interest in:</h1>
+
+            <div class="textcenter">
+                <p class="note"><b>{{(stockAlert$ | async).product.name}}</b></p>
+            </div>
+
+            <div class="textcenter">
+                <p class="note">We will notify you as soon as stocks are back for the SES Booking System. <br/>
+                Stay tuned for our updates!</p>
+            </div>
+            
+        </div>
+        
+        <br/>
+        <br/>
+        <br/>
+        
+        <div class="col-12 btn-wrap" align="center">
+            <button (click)="closewindow()" class="btn-default" mat-stroked-button [routerLink]="['/register']">Close Window</button>
+        </div>
+    </div>
+    <footer class="pt-3 mt-4 text-muted border-top">
+        <div class="px-3">
+          Copyright© 1995-2024 Samsung. All rights reserved.
+        </div>
+      </footer>
+</div>

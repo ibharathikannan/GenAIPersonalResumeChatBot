@@ -1,0 +1,54 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+  <header class="py-3">
+      <img src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+  </header>
+</div>
+
+<div class="container-banner">
+    <div class="header-text">
+      <h2 class="subhead">Samsung Experience Store</h2>
+      <h1 class="headline" #target2>Samsung Live Space</h1>       
+    </div>
+    <div class="banner-place hidden-xs">
+      <img src="../../../../assets/banners/Main-Banner-PC-opaque.jpg" alt="">
+    </div>
+    <div class="banner-place hidden-lg hidden-md hidden-sm">
+      <img class="banner-mob" src="../../../../assets/banners/Main-Banner-MO-opaque.jpg" alt="">
+    </div>
+</div>
+<div class="white-bg-main container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-8 my-5">
+      <div class="alert alert-danger mx-3" role="alert">
+        <h4 class="alert-heading text-center">
+          <mat-icon fontIcon="warning" class="icon-alert-l"></mat-icon>
+        </h4>
+        <h5 class="text-center mt-2">
+          {{ 'eus.booking.instructionLine1' | translate }}
+        </h5>
+        <h5 class="text-center" style="text-align: center; font-size: 20px;">{{ 'eus.booking.instructionLine2' |
+          translate }}</h5>
+      </div>
+      <p class="text-center mx-3 mt-5"><strong>{{ 'eus.booking.instructionLine3' | translate }}</strong></p>
+      <div class="wrapper btn-wrap mt-2 mx-3">
+        <button class="centeredButton btn-default" mat-stroked-button (click)="bookNow()">
+          {{ 'Book Now' | translate }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- <h4 class="centeredText" style="text-align: center; font-size: 30px;"> {{ 'eus.booking.instructionLine1' | translate }} <br/>
+        {{ 'eus.booking.instructionLine2' | translate }}</h4>  
+        <br/> -->
+
+
+  <!-- <h4 class="centeredText" style="text-align: center; font-size: 16px;">{{ 'eus.booking.instructionLine3' | translate }}</h4>   -->
+  <div class="container">
+  <footer class="pt-3 mt-4 text-muted border-top">
+    <div class="px-3">
+      Copyright© 1995-2024 Samsung. All rights reserved.
+    </div>
+  </footer>
+</div>

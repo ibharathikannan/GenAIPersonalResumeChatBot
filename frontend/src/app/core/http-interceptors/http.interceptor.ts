@@ -1,0 +1,47 @@
+import { Injectable, Injector, ErrorHandler } from '@angular/core';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { AuthenticateService } from '../../shared/services/authenticate.service';
+
+/** Passes HttpErrorResponse to application-wide error handler */
+@Injectable()
+export class HttpErrorInterceptor implements HttpInterceptor {
+  constructor(private injector: Injector) {}
+
+  intercept(
+    request: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
+    return next.handle(request).pipe(
+      tap(null, (err: any) => {
+        if (err instanceof HttpErrorResponse) {
+          const appErrorHandler = this.injector.get(ErrorHandler);
+          appErrorHandler.handleError(err);
+        }
+      })
+    );
+  }
+}
+
+@Injectable()
+export class CustomHttpInterceptor implements HttpInterceptor {
+  constructor(private readonly authenticationService: AuthenticateService) {}
+
+  intercept(request: HttpRequest<any>, next: HttpHandler) {
+    let url = request.url;
+
+    if (!url.startsWith('http')) {
+      url = document.getElementsByTagName('base').item(0).href + url;
+    }
+
+    request = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${this.authenticationService.getToken()}`
+      },
+      url
+    });
+
+    return next.handle(request);
+  }
+}

@@ -1,0 +1,292 @@
+@use '@angular/material' as mat;
+
+@import 'styles-variables';
+
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+@import 'styles-reset';
+
+@include mat.core();
+
+@import 'themes/default-theme.scss';
+@import 'themes/light-theme.scss';
+@import 'themes/black-theme.scss';
+@import 'themes/nature-theme.scss';
+
+@import 'styles-reset.scss-theme';
+@import 'app/app.component.scss-theme';
+@import 'app/shared/big-input/big-input.component.scss-theme';
+@import 'app/shared/dialogs/confirmation-dialog/confirmation-dialog.component.scss-theme.scss';
+// @import '~ngx-sharebuttons/themes/default/default-theme';
+
+@mixin custom-components-theme($theme) {
+  @include eus-styles-reset-theme($theme);
+  @include eus-app-component-theme($theme);
+  @include eus-big-input-component-theme($theme);
+  @include eus-confirmation-dialog-component-theme($theme);
+}
+
+.default-theme {
+  @include mat.all-component-themes($eus-theme);
+  @include custom-components-theme($eus-theme);
+}
+
+.light-theme {
+  @include mat.all-component-themes($eus-light-theme);
+  @include custom-components-theme($eus-light-theme);
+}
+
+.black-theme {
+  @include mat.all-component-themes($eus-black-theme);
+  @include custom-components-theme($eus-black-theme);
+}
+
+.nature-theme {
+  @include mat.all-component-themes($eus-nature-theme);
+  @include custom-components-theme($eus-nature-theme);
+}
+
+$custom-typography: mat.m2-define-typography-config($font-family: '"Segoe UI", Roboto, Helvetica, Arial, sans-serif');
+@include mat.typography-hierarchy($custom-typography);
+
+h1 {
+  font-size: 62px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 48px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 32px;
+  line-height: 1.33;
+  font-weight: 700;
+}
+
+h4 {
+  font-size: 24px;
+  line-height: 1.33;
+  font-weight: 700;
+}
+
+.title-1{
+  font-size: 22px;
+  line-height: 1.33;
+  font-weight: 600;
+}
+
+.title-2{
+  font-size: 20px;
+  line-height: 1.33;
+  font-weight: 600;
+}
+
+.body-1{
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.body-2{
+  font-size: 14px;
+  line-height: 1.33;
+}
+
+.body-3{
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+/*** Global page ***/
+@media all and (max-width: 767px) {
+  .px-sm-20px{
+     padding: 0 20px;
+  }
+}
+
+
+/*** Registration page ***/
+
+@media screen and (max-width: 470px) {
+ 
+  .header-text h1{
+    color: #ffffff;
+    text-align: center;
+    font-size: 35px;
+    line-height: 1.2;
+  }
+}
+
+/*** Master page ***/
+.card-bg{
+  background-color: #FEF6F3;
+}
+.badge-bg-grey{
+  background-color: #E0E0E0!important;
+  color: #5D5D5D!important;
+}
+.card-radius-20{
+  border-radius: 20px;
+}
+.card-img-top{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  max-height: 300px;
+  width: auto;
+}
+.card-btm{
+  // min-height: 30px;
+}
+
+
+.card-text.card-description-animation{
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  max-height: 500px;
+}
+
+.fade-in-out{
+  opacity: 1;
+  max-height: none;
+}
+
+.truncate{
+ max-height: none;
+}
+
+.readmore-btn{
+  text-decoration: none;
+  color: #2189FF;
+  cursor: pointer;
+}
+.seat-alert{
+  color: #f13749;
+  font-size: 14px;
+  display: block;
+  min-height: 30px;
+  padding-bottom: 6px;
+}
+.default-theme.w-100{
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .default-theme.w-100-sm{
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .default-theme .mat-stroked-button.mat-button-disabled.mat-button-disabled{
+    width: 100%;
+  }
+  .default-theme .mat-stroked-button:not(.mat-button-disabled){
+    width: 100%;
+  }
+}
+
+.default-theme .mat-stroked-button:not(.mat-button-disabled) {
+  border-color: #0000001f;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50px;
+  padding: 8px 0;
+}
+
+.default-theme .mat-stroked-button:disabled {
+  border-color: #0000001f;
+  background-color: #d9d9d9;
+  color: #a1a1a1;
+  border-radius: 50px;
+  padding: 8px 0;
+  cursor: default;
+}
+
+.default-theme .mat-stroked-button.mat-button-disabled.mat-button-disabled{
+  border-radius: 50px;
+  padding: 8px 0;
+  background-color: #DDDDDD;
+  color: #AAAAAA;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+
+
+
+/*** Summary page ***/
+
+.personal-infov2 {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .appointment-info{
+    display: inline-block;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+  
+  .opt-info{
+    display: inline-block;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+.bg-grey{
+  background-color: #ededed;
+  padding: 20px 20px;
+  border-radius: 20px;
+}
+
+.bg-white{
+  background-color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+h2.thank-you{
+  font-size: 58px!important;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center!important;
+  color: #000!important;
+}
+
+.note-thank-you{
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: block;
+}
+.note-topic{
+  line-height: 1.6;
+}
+
+.note-booking-reference{
+  font-size: 18px;
+  padding: 0;
+  margin-bottom: 0;
+  display: block;
+}
+
+
+/*** Booking page ***/
+
+.icon-alert-l{
+  transform: scale(2);
+}

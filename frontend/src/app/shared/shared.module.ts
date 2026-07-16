@@ -1,0 +1,240 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDividerModule } from '@angular/material/divider';
+
+import {
+  MatSliderModule
+} from '@angular/material/slider';
+import {
+  MatTableModule
+} from '@angular/material/table';
+import {
+  MatSortModule
+} from '@angular/material/sort';
+import {
+  MatPaginatorModule
+} from '@angular/material/paginator';
+import {
+  MatDialogModule
+} from '@angular/material/dialog';
+import {
+  MatGridListModule
+} from '@angular/material/grid-list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import {
+  faBars,
+  faUserCircle,
+  faPowerOff,
+  faCog,
+  faPlayCircle,
+  faRocket,
+  faPlus,
+  faEdit,
+  faTrash,
+  faTimes,
+  faCaretUp,
+  faCaretDown,
+  faExclamationTriangle,
+  faFilter,
+  faTasks,
+  faCheck,
+  faSquare,
+  faLanguage,
+  faPaintBrush,
+  faLightbulb,
+  faWindowMaximize,
+  faStream,
+  faBook,
+  faUserPlus,
+  faQuestionCircle,
+  faUserEdit,
+  faKey,
+  faUserCog,
+  faGlobeEurope,
+  faPalette,
+  faBrush,
+  faCheckCircle,
+  faSearch,
+  faFileDownload,
+  faLink
+} from '@fortawesome/free-solid-svg-icons';
+import {
+  faGithub,
+  faMediumM,
+  faTwitter,
+  faInstagram,
+  faYoutube,
+  faFacebook,
+  faFacebookF,
+  faWhatsapp,
+  faLinkedin
+} from '@fortawesome/free-brands-svg-icons';
+
+
+
+import { BigInputComponent } from './big-input/big-input.component';
+import { BigInputActionComponent } from './big-input/big-input-action.component';
+import { FormlyModule } from '@ngx-formly/core';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog/confirmation-dialog.component';
+import { ThemePickerComponent } from './theme-picker/theme-picker.component';
+import { ChatWidgetComponent } from './chat/chat-widget.component';
+import { ThreeBackgroundComponent } from './three-bg/three-background.component';
+import { ScrollRevealDirective } from './directives/scroll-reveal.directive';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormlyModule,
+    TranslateModule,
+
+    MatButtonModule,
+    MatToolbarModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatTabsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatMenuModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    FontAwesomeModule,
+    MatGridListModule
+  ],
+  exports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormlyModule,
+    TranslateModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatChipsModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatSlideToggleModule,
+    MatDividerModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatNativeDateModule,
+    FontAwesomeModule,
+    ConfirmationDialogComponent,
+    ThemePickerComponent,
+    BigInputComponent,
+    BigInputActionComponent,
+    ChatWidgetComponent,
+    ThreeBackgroundComponent,
+    ScrollRevealDirective
+  ],
+  declarations: [
+    BigInputComponent,
+    BigInputActionComponent,
+    ConfirmationDialogComponent,
+    ThemePickerComponent,
+    ChatWidgetComponent,
+    ThreeBackgroundComponent,
+    ScrollRevealDirective
+  ],
+})
+export class SharedModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faBars,
+      faUserCircle,
+      faPowerOff,
+      faCog,
+      faRocket,
+      faPlayCircle,
+      faGithub,
+      faMediumM,
+      faTwitter,
+      faInstagram,
+      faYoutube,
+      faPlus,
+      faEdit,
+      faTrash,
+      faTimes,
+      faCaretUp,
+      faCaretDown,
+      faExclamationTriangle,
+      faFilter,
+      faTasks,
+      faCheck,
+      faSquare,
+      faLanguage,
+      faPaintBrush,
+      faLightbulb,
+      faWindowMaximize,
+      faStream,
+      faBook,
+      faUserPlus,
+      faQuestionCircle,
+      faUserEdit,
+      faKey,
+      faUserCog,
+      faGlobeEurope,
+      faPalette,
+      faBrush,
+      faCheckCircle,
+      faSearch,
+      faFileDownload,
+      faFacebook,
+      faFacebookF,
+      faWhatsapp,
+      faLinkedin,
+      faLink
+    );
+  }
+}

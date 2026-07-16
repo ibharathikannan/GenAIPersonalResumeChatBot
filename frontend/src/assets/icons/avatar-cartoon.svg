@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="100" fill="url(#bgGrad)"/>
+
+  <!-- shoulders / shirt -->
+  <path d="M40 200 Q40 150 100 148 Q160 150 160 200 Z" fill="#5b6b7a"/>
+  <path d="M92 150 L100 162 L108 150 L100 156 Z" fill="#3f4c58"/>
+
+  <!-- neck -->
+  <rect x="85" y="128" width="30" height="30" rx="10" fill="#c08552"/>
+
+  <!-- ears -->
+  <ellipse cx="57" cy="103" rx="7" ry="10" fill="#c08552"/>
+  <ellipse cx="143" cy="103" rx="7" ry="10" fill="#c08552"/>
+
+  <!-- head -->
+  <ellipse cx="100" cy="95" rx="46" ry="50" fill="#c68a58"/>
+
+  <!-- hair -->
+  <path d="M52 95
+           C48 55 68 30 100 30
+           C132 30 152 55 148 95
+           C144 78 138 68 130 62
+           C126 74 118 66 112 64
+           C108 74 96 64 92 66
+           C86 60 76 66 70 76
+           C64 66 56 76 52 95 Z" fill="#241d18"/>
+  <path d="M52 95 C50 108 52 118 56 122 C54 108 55 98 58 90 Z" fill="#241d18"/>
+  <path d="M148 95 C150 108 148 118 144 122 C146 108 145 98 142 90 Z" fill="#241d18"/>
+
+  <!-- eyebrows -->
+  <path d="M70 78 Q79 73 88 78" fill="none" stroke="#241d18" stroke-width="3" stroke-linecap="round"/>
+  <path d="M112 78 Q121 73 130 78" fill="none" stroke="#241d18" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- glasses -->
+  <rect x="63" y="82" width="34" height="26" rx="8" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+  <rect x="103" y="82" width="34" height="26" rx="8" fill="none" stroke="#1a1a1a" stroke-width="4"/>
+  <line x1="97" y1="93" x2="103" y2="93" stroke="#1a1a1a" stroke-width="4"/>
+  <line x1="63" y1="90" x2="52" y2="88" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <line x1="137" y1="90" x2="148" y2="88" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- eyes -->
+  <ellipse cx="80" cy="96" rx="3.5" ry="4.5" fill="#241d18"/>
+  <ellipse cx="120" cy="96" rx="3.5" ry="4.5" fill="#241d18"/>
+
+  <!-- nose -->
+  <path d="M100 98 Q96 112 100 116 Q104 114 102 110" fill="none" stroke="#a86f42" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- mustache -->
+  <path d="M76 122 Q88 114 100 120 Q112 114 124 122 Q112 126 100 124 Q88 126 76 122 Z" fill="#241d18"/>
+
+  <!-- mouth -->
+  <path d="M92 128 Q100 132 108 128" fill="none" stroke="#8a5535" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- goatee -->
+  <path d="M84 128 Q84 144 100 148 Q116 144 116 128 Q108 138 100 138 Q92 138 84 128 Z" fill="#241d18"/>
+</svg>

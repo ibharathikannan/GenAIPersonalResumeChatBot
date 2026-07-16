@@ -1,0 +1,223 @@
+.container {
+  max-width: 1440px;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.white-bg-main{
+  background-color: #ffffff;
+}
+
+  .wrapper img{
+    max-width: 1440;
+    width: 100%;
+  }
+  
+  
+  .main{
+    background-color: #ffffff;
+    padding: 65px 0;
+  }
+  
+  .wrapper{
+    height: auto;
+    text-align: center;
+  }
+  .textcenter{
+      text-align: center;
+  }
+
+  h1{
+    font-size: 64px;
+    font-size: 3rem;
+    line-height: 68px;
+  }
+    .note{
+        font-size: 18px;
+        margin: 20px 0 25px 0;
+        display: block;
+    }
+    .note-appointment{
+        font-size: 18px;
+        margin: 0;
+        display: block;
+    }
+    .store{
+        display: inline-table;
+    }
+    @media screen and (max-width: 728px) {
+      .store{
+        display: inline-table;
+        margin: 0 20px;
+      }
+    }
+
+    .btn-wrap{
+        display: block;
+    }
+    .details{
+        background-color: #f8f9fa !important;
+        display: block;
+        margin: 0 0 30px;
+    }
+    .details-text{
+        font-size: 18px;
+        margin: 10px 0 10px;
+        display: block;
+    }
+  .textcenter{
+    text-align: center;
+  }
+  
+  .bodyWrapper{
+    max-width: 900px;
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+.textArea{
+    display: block
+}
+
+
+/***Added for the Banner ***/
+img{
+  max-width: 100%;
+}
+
+.header-text {
+  position: absolute;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 210px 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+h2.subhead {
+  line-height: 1.6;
+  text-align: center;
+  background-color: transparent!important;
+  color: #fff;
+  font-size: 20px;
+}
+
+h1{
+  color: #ffffff;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 534px) {
+  .header-text {
+    position: absolute;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 140px 50px;
+    margin: 0 auto;
+  }
+  
+  h1{
+    color: #ffffff;
+    text-align: center;
+    font-size: 40;
+  }
+  
+  h2{
+    background-color: transparent !important;
+    color: #ffffff;
+    font-size: 18px;
+  }
+  
+  h2.subhead {
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .mobile-menu{
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .mobile-view{
+    display: inline-flex;
+    width: 100%;
+  }
+
+  /* .selected-card{
+    background-color: #efefef;
+  } */
+
+  .menu-img{
+    margin: 0;
+  }
+
+  .menu-img img{
+    margin-left: 30px;
+  }
+
+  .menu-title{
+    vertical-align: bottom;
+    margin-top: 8px;
+    display: block;
+  }
+
+  .menu-text{
+    max-width: 270px;
+  }
+
+  .mat-card{
+    padding: 15px 0;
+  }
+
+  /* .selected-card{
+    border: none !important;
+  } */
+
+  .product-group{
+    padding: 0;
+  }
+
+  .mobile-border{
+    border-top: 2px solid #000000;
+    padding-top: 25px;
+  }
+  .product-img img{
+    margin: 0 30%;
+  }
+  .model-img img{
+    margin: 0 30%;
+  }
+  
+}
+
+@media screen and (max-width: 470px) {
+ 
+  h1{
+    color: #ffffff;
+    text-align: center;
+    font-size: 35px;
+  }
+  
+  h2{
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 18px;
+  }
+
+  h4{
+    font-size: 24px;
+  }
+
+  .product-img img{
+    margin: 0 30%;
+  }
+
+  .model-img img{
+    margin: 0 30%;
+  }
+
+}

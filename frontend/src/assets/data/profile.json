@@ -1,0 +1,26 @@
+{
+  "name": "Bharathikannan Ilanchezhiyan",
+  "title": "Software Engineer",
+  "subtitle": "Full-Stack .NET, Angular & Azure Cloud",
+  "location": "Singapore",
+  "tagline": "10+ years designing, building, and shipping robust software — from C#/.NET REST APIs to Angular front-ends and Azure cloud infrastructure. Ask my AI assistant about my experience below.",
+  "avatarUrl": "assets/icons/avatar-cartoon.png",
+  "speechBubbles": [
+    "Hey! Ask my AI assistant about my experience.",
+    "Curious about my .NET or Azure work? Ask below!"
+  ],
+  "navLinks": [
+    { "label": "Home", "link": "home", "icon": "house" },
+    { "label": "About", "link": "about", "icon": "circle-info" },
+    { "label": "Services", "link": "services", "icon": "gear" }
+  ],
+  "contact": { "label": "Contact Me", "email": "i.bharathikannan@gmail.com", "phone": "+65 9716 6797" },
+  "socials": [
+    { "platform": "LinkedIn", "url": "#", "icon": "linkedin" },
+    { "platform": "GitHub", "url": "#", "icon": "github" }
+  ],
+  "footerLinks": [
+    { "label": "Privacy Policy", "link": "#" },
+    { "label": "Terms", "link": "#" }
+  ]
+}

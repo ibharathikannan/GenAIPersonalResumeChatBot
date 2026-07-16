@@ -1,0 +1,5 @@
+[
+  { "id": "web-api-development", "title": "Web & API Development", "description": "Designing and building robust web portals and REST APIs with C#, .NET Core, and Angular.", "iconUrl": "assets/icons/services/web-development.svg" },
+  { "id": "cloud-devops", "title": "Cloud & DevOps", "description": "Architecting Azure cloud solutions and CI/CD pipelines with Azure DevOps and GitHub Actions.", "iconUrl": "assets/icons/services/cloud-devops.svg" },
+  { "id": "database-design", "title": "Database Design", "description": "Designing and optimizing SQL Server, MySQL, and DB2 schemas for performance and integrity.", "iconUrl": "assets/icons/services/database-design.svg" }
+]

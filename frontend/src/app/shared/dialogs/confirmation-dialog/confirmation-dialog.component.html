@@ -1,0 +1,15 @@
+<div mat-dialog-title>
+  <fa-icon class="title-icon" icon="question-circle"></fa-icon> 
+  <span class="title primary-color"> {{data.title}}</span>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <div>
+    <p>{{data.content}}</p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button *ngIf="data.isNoButtonNeeded" (click)="dialogRef.close(false)">No</button>
+  <button mat-raised-button color="accent" (click)="dialogRef.close(true)">OK</button>
+</mat-dialog-actions>

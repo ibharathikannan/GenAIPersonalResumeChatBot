@@ -1,0 +1,112 @@
+* {
+  &:active,
+  :focus {
+    outline: none !important;
+  }
+}
+
+code {
+  white-space: nowrap;
+  border-radius: 10px;
+  padding: 0 8px 1px 8px;
+}
+
+.mat-menu-content {
+  fa-icon {
+    position: relative;
+    top: 2px;
+    left: 4px;
+  }
+}
+.mat-checkbox .mat-checkbox-layout {
+  white-space: normal !important;
+}
+.mat-checkbox-inner-container{
+  margin: 1px 8px 0 0 !important;
+}
+
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+.btn-wrap .btn-default {
+  box-sizing: border-box;
+  position: relative;
+  color: #fff !important;
+  background-color: #000000 !important;
+  font-size: 20px  !important;
+  font-size: 1.25rem  !important;
+  font-weight: bold !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer  !important;
+  outline: none;
+  border: 1px solid #000000;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 145px !important;
+  line-height: 36px;
+  letter-spacing: 1px;
+  padding: 10px 25px !important;
+  border-radius: 30px  !important;
+  overflow: visible;
+
+}
+
+.btn-wrap .mat-button.mat-primary.mat-button-disabled, .btn-wrap .mat-button.mat-accent.mat-button-disabled, .btn-wrap .mat-button.mat-warn.mat-button-disabled, .btn-wrap .mat-button.mat-button-disabled.mat-button-disabled, .btn-wrap .mat-icon-button.mat-primary.mat-button-disabled, .btn-wrap .mat-icon-button.mat-accent.mat-button-disabled, .btn-wrap .mat-icon-button.mat-warn.mat-button-disabled, .btn-wrap .mat-icon-button.mat-button-disabled.mat-button-disabled, .btn-wrap .mat-stroked-button.mat-primary.mat-button-disabled, .btn-wrap .mat-stroked-button.mat-accent.mat-button-disabled, .btn-wrap .mat-stroked-button.mat-warn.mat-button-disabled, .btn-wrap .mat-stroked-button.mat-button-disabled.mat-button-disabled {
+  box-sizing: border-box;
+  position: relative;
+  color: #ddd !important;
+  background-color: transparent!important;
+  font-size: 20px  !important;
+  font-size: 1.25rem  !important;
+  font-weight: bold !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer  !important;
+  outline: none;
+  border: 1px solid #ddd;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 145px !important;
+  line-height: 36px;
+  letter-spacing: 1px;
+  padding: 10px 25px !important;
+  border-radius: 30px  !important;
+  overflow: visible;
+
+}

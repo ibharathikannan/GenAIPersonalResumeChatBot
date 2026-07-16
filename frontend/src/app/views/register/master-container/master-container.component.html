@@ -1,0 +1,66 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+  <header class="py-3">
+      <img src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+  </header>
+</div>
+<div class="container" >
+  <div class="row">
+    <div class="container-banner">
+      <div class="header-text">
+        <h2 class="subhead">Samsung Experience Store</h2>
+        <h1 class="headline" #target2>Samsung Live Space</h1>       
+      </div>
+      <div class="banner-place hidden-xs">
+        <img src="../../../../assets/banners/generic-banner-opaque-d.jpg" alt="Samsung Live Space">
+      </div>
+      <div class="banner-place hidden-lg hidden-md hidden-sm">
+        <img class="banner-mob" src="../../../../assets/banners/generic-banner-opaque-m.jpg" alt="Samsung Live Space">
+      </div>
+    </div>
+    <div class="p-4">
+      <div class="full-width_" *ngIf="categories.length>0">
+        <h4 class="textcenter top-space">Visit the store and immerse yourself in samsung latest,<br>most advanced products</h4>
+        <div class="row">
+            <div *ngFor="let category of categories;" class='col-md-4'>
+              <div class="card mb-3 card-bg card-radius-20" (click)="selectCategory(category)" [ngClass]="{'selected-card':categorySelected === category}">
+                  <img class="banner-mob" src="{{category.imageUrl}}" class="card-img-top" alt="{{category.name}}">
+              
+                  <div class="card-body">
+                    <h5 class="card-title mb-4">{{category.name}}</h5>
+                    <span class="badge bg-secondary badge-bg-grey">7 Seats/Session</span>
+                    <div class="mb-1 pb-3 border-bottom">
+                      <!-- <p class="card-text mb-0" [innerHTML]="category.description"></p> -->
+                      <p class="card-text card-description-animation mb-3" [innerHTML]="getDescription(category)" [ngClass]="{'truncate' : truncationState[category.id], 'fade-in-out': truncationState[category.id]}"></p>
+                      
+                      <div class="d-flex align-items-start justify-content-between ">
+                        <a class="readmore-btn" *ngIf="getDescription(category).length > 175" (click)="toggleDescription(category)">
+                          {{ truncationState[category.id] ? 'Read less' : 'Read more'}}
+                        </a> 
+                        
+                      </div>  
+                    </div>
+                      <div class="seat-alert">
+                        <span class="alert-seat-btn" *ngIf="category.slotCount<=5 && category.slotCount>0">Few Seats Left</span>
+                        <span class="alert-seat-btn" *ngIf="category.slotCount==0">No Seats Left</span>
+                      </div>
+                      <button class="btn-default w-100 " mat-stroked-button type="submit" 
+                      (click)="Reserve(category)" 
+                      [disabled]="category.slotCount==0">
+                        Reserve     
+                        <!-- <ng-container *ngIf="category.slotCount==0; else reserveLabel">No Seats Left</ng-container>
+                        <ng-template #reserveLabel></ng-template>  -->
+                      </button>
+                    
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="pt-3 mt-4 text-muted border-top">
+    <div class="px-3">
+      Copyright© 1995-2024 Samsung. All rights reserved.
+    </div>
+  </footer>
+  </div>

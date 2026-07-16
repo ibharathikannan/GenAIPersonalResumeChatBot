@@ -1,0 +1,154 @@
+<div class="home-page">
+  @if (profile$ | async; as profile) {
+    <header class="top-nav" id="home">
+      <div class="brand">
+        <img class="brand-avatar" [src]="profile.avatarUrl" alt="{{ profile.name }}" />
+        <div class="brand-text">
+          <div class="brand-name">{{ profile.name }}</div>
+          <div class="brand-title">{{ profile.title }} | {{ profile.subtitle }}</div>
+        </div>
+      </div>
+      <button type="button" class="nav-ai-btn" (click)="openChat()">
+        <span>🤖</span><span class="nav-ai-btn-label">Ask My AI Twin</span>
+      </button>
+      <a class="contact-btn" [href]="'mailto:' + profile.contact.email">{{ profile.contact.label }}</a>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Meet {{ profile.name }}</h1>
+        <p class="tagline">{{ profile.tagline }}</p>
+        <div class="contact-strip">
+          <span>📍 {{ profile.location }}</span>
+          <span>✉️ {{ profile.contact.email }}</span>
+        </div>
+
+        <button type="button" class="ai-cta" (click)="openChat()">
+          <span class="ai-cta-icon">🤖</span>
+          <span class="ai-cta-copy">
+            <strong>Ask My AI Twin</strong>
+            <small>Live GenAI assistant, grounded in my real resume data — try it!</small>
+          </span>
+          <span class="ai-cta-arrow">→</span>
+        </button>
+      </div>
+      <div class="hero-avatar-wrap">
+        <img class="hero-avatar" [src]="profile.avatarUrl" alt="{{ profile.name }}" />
+      </div>
+      <div class="hero-3d-col">
+        <eus-three-background [spread]="0"></eus-three-background>
+      </div>
+    </section>
+
+    <section class="content-tabs" eusScrollReveal>
+      <div class="tab-bar">
+        <button type="button" [class.active]="activeTab === 'education'" (click)="setTab('education')">
+          🎓 Education
+        </button>
+        <button type="button" [class.active]="activeTab === 'skills'" (click)="setTab('skills')">
+          🛠️ Skills
+        </button>
+        <button type="button" [class.active]="activeTab === 'projects'" (click)="setTab('projects')">
+          🚀 Projects
+        </button>
+        <button type="button" [class.active]="activeTab === 'services'" (click)="setTab('services')">
+          ⚡ Services
+        </button>
+      </div>
+
+      <div class="tab-panel">
+        @switch (activeTab) {
+          @case ('education') {
+            <div class="timeline" id="education">
+              @for (edu of education$ | async; track edu.id) {
+                <div class="timeline-item">
+                  <div class="timeline-marker">
+                    <span class="timeline-icon">
+                      @switch (edu.icon) {
+                        @case ('brain') { 🧠 }
+                        @case ('diagram-project') { 🗺️ }
+                        @default { 🎓 }
+                      }
+                    </span>
+                  </div>
+                  <div class="timeline-card">
+                    <div class="timeline-degree">{{ edu.degree }}</div>
+                    <div class="timeline-institution">{{ edu.institution }} &middot; {{ edu.location }}</div>
+                    @if (edu.description) {
+                      <p class="timeline-description">{{ edu.description }}</p>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+          @case ('skills') {
+            <div class="skills-compact" id="about">
+              @for (group of skillGroups$ | async; track group.category) {
+                <div class="skill-group">
+                  <span class="skill-group-title">{{ group.category }}</span>
+                  <div class="chip-row">
+                    @for (skill of group.skills; track skill.id) {
+                      <span class="chip" [style.--tile-color]="skill.colorHex" [title]="skill.description || skill.name">
+                        {{ skill.name }}
+                      </span>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+          @case ('projects') {
+            <div class="project-grid" id="projects">
+              @for (project of projects$ | async; track project.id) {
+                <div class="project-card">
+                  <div class="project-card-header">
+                    <span class="project-icon">🚀</span>
+                    <span class="project-name">{{ project.name }}</span>
+                  </div>
+                  <p class="project-description">{{ project.description }}</p>
+                  <div class="chip-row">
+                    @for (tech of project.technologies; track tech) {
+                      <span class="chip tech-chip">{{ tech }}</span>
+                    }
+                  </div>
+                  <a class="project-link" [href]="project.link" target="_blank" rel="noopener">
+                    View Project ↗
+                  </a>
+                </div>
+              }
+            </div>
+          }
+          @case ('services') {
+            <div class="tile-grid" id="services">
+              @for (service of services$ | async; track service.id) {
+                <div class="tile service-tile" [title]="service.description">
+                  <img [src]="service.iconUrl" [alt]="service.title" />
+                  <span>{{ service.title }}</span>
+                </div>
+              }
+            </div>
+          }
+        }
+      </div>
+    </section>
+
+    <footer class="home-footer" id="contact">
+      <div class="footer-links">
+        @for (link of profile.footerLinks; track link.label) {
+          <a [href]="link.link">{{ link.label }}</a>
+        }
+      </div>
+      <div class="footer-socials">
+        @for (social of profile.socials; track social.platform) {
+          <a [href]="social.url" [attr.aria-label]="social.platform" target="_blank" rel="noopener">
+            <fa-icon [icon]="['fab', social.icon]"></fa-icon>
+          </a>
+        }
+      </div>
+      <div class="footer-copyright">&#169; {{ year }} {{ profile.name }}</div>
+    </footer>
+  }
+
+  <eus-chat-widget></eus-chat-widget>
+</div>

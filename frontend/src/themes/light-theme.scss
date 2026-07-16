@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+$eus-light-primary: mat.m2-define-palette(mat.$m2-grey-palette, 300, 600, 400);
+$eus-light-accent: mat.m2-define-palette(mat.$m2-indigo-palette, 600);
+$eus-light-warn: mat.m2-define-palette(mat.$m2-deep-orange-palette, 400);
+
+$eus-light-theme: mat.m2-define-light-theme(
+  $eus-light-primary,
+  $eus-light-accent,
+  $eus-light-warn
+);

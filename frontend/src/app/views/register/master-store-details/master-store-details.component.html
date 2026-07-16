@@ -1,0 +1,102 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+  <header class="py-3">
+    <img
+      src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+  </header>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="container-banner">
+      <!--desktop size -->
+      <div class="banner-place hidden-xs">
+        <img src="{{formInfo.productUrl}}" alt="">
+      </div>
+      <!-- mobile size-->
+      <div class="banner-place hidden-lg hidden-md hidden-sm">
+        <img class="banner-mob" src="{{formInfo.product.mobileUrl}}" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="px-3 mb-3 py-3 my-3">{{formInfo.product.name}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="location-info p-3">
+        <h5 class="mb-3">Choose Store Location</h5>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Select a Location</mat-label>
+          <mat-select [(ngModel)]="selectedLocation" name="location" [ngModelOptions]="{standalone: true}"
+            (selectionChange)="selectLocation()">
+            <mat-option #target *ngFor="let location of locationsList" [value]="location">
+              {{location.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="location-details">
+          <div class="mb-2 py-4" *ngIf="selectedLocation">
+            <mat-icon>room</mat-icon><strong>{{selectedLocation.addressLine1}}
+              {{selectedLocation.addressLine2}}</strong>
+          </div>
+          <div style="width: 100%">
+            <iframe id="storeLocation" width="100%" height="300" frameborder="0" scrolling="no" marginheight="0"
+              marginwidth="0">
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="date-time p-3">
+        <div>
+          <h5 class="mb-3">Choose Date and Time</h5>
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-12">
+              <mat-form-field class="full-width" appearance="fill">
+                <mat-label style="border-bottom: 1px solid #000000;">Choose a date
+                </mat-label>
+                <input matInput [formControl]="date" [matDatepickerFilter]="myFilter" [min]="minDate" [max]="maxDate"
+                  [matDatepicker]="dpCollection" disabled (dateInput)="dateEvent('input', $event)">
+                <mat-datepicker-toggle matSuffix [for]="dpCollection"></mat-datepicker-toggle>
+                <mat-datepicker #dpCollection disabled="false"></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-sm-6 col-md-6 col-12" *ngIf="selectedDate">
+              <mat-form-field class="custom-time">
+                <mat-label class="time-label">Select a time slot</mat-label>
+                <mat-chip-list>
+                  <mat-chip #ref="matChip" *ngFor="let availableTimeslot of availableTimeslots"
+                    (click)="selectTimeSlot(ref, availableTimeslot)" [selected]="availableTimeslot.selected"
+                    [ngStyle]="ref.selected && {'background-color': 'black'}">
+                    <!-- Non selected chips WILL have a bg-color the user chooses -->
+                    {{availableTimeslot.startDateTime | date:'shortTime' }}
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-form-field>
+
+              <ng-template #noSlot>
+                <br />
+                <p>Fully Booked</p>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="note p-3" style="display: none;">Note: Appointment will be expired after 3 days from booking date
+        schedule.</p>
+      <br /><br />
+      <div class="col-12 text-center btn-wrap p-3">
+        <button class="btn-default" mat-stroked-button type="submit" (click)="continue()" [disabled]="selectedLocation == null
+                || selectedDate == null
+                || timeSlot == null">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer class="pt-3 mt-4 text-muted border-top">
+    <div class="px-3">
+      Copyright© 1995-2024 Samsung. All rights reserved.
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,114 @@
+<div class="container mb-0" [ngClass]="routeAnimationsElements">
+    <header class="py-3">
+        <img
+            src="https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/gnb-desktop-120x32.png">
+    </header>
+</div>
+<div class="container">
+    <div class="container-banner">
+        <div class="header-text">
+            <h1 class="headline">Samsung Experience Store<br>Appointment Service</h1>
+            <h2 class="subhead">Samsung Live Space, Switch Programme or Trade-in</h2>
+        </div>
+        <div class="banner-place hidden-xs">
+            <img src="../../../../assets/banners/Main-Banner-PC-opaque.jpg" alt="">
+        </div>
+        <div class="banner-place hidden-lg hidden-md hidden-sm">
+            <img class="banner-mob" src="../../../../assets/banners/Main-Banner-MO-opaque.jpg" alt="">
+        </div>
+    </div>
+    <div class="main">
+        <div class="bodyWrapper row">
+            <div class="col-md-12">
+                <h3 class="text-center mb-2">Booking Summary</h3>
+                <!-- <p class="text-center mb-5">Fields marked with an asterisk(<span class="mandatory-color">*</span>) are
+                    mandatory.</p> -->
+                <br />
+                <h4>Personal Information</h4>
+                <div class="personal-infov2 bg-grey mb-5">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 display-break">
+                        <p class="note-thank-you"><strong>First Name:</strong> {{firstName}}</p>
+                        <p class="note-thank-you"><strong>Email Address:</strong> {{email}}</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 display-break">
+                        <p class="note-thank-you"><strong>Last Name:</strong> {{lastName}}</p>
+                        <p class="note-thank-you"><strong>Mobile Number:</strong> {{mobileNumber}}</p>
+                    </div>
+                </div>
+                <br>
+                <h4>Appointment Details</h4>
+                <div class="appointment-info bg-grey">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 display-break">
+                        <p><strong>Appointment Type:</strong> {{category}}</p>
+                        <div *ngIf="category =='Samsung Live Space'">
+                            <p class="note-topic"><strong>Topic</strong>: {{product.name}}</p>
+                            <br>
+                            <!-- <p class="product-img">
+                                <img src={{imageUrl}} alt="product" width="200" height="200">
+                            </p> -->
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 display-break" *ngIf="storeLocation">
+                        <p><strong>Date and Time:</strong> {{timeSlot.startDateTime | date: 'dd-MM-yyyy'}} |
+                            {{timeSlot.startDateTime | date: 'h:mm a'}}</p>
+                        <p><strong>Store Location:</strong></p>
+                        <div class="store-details">
+                            <p class="note-thank-you">{{storeLocation.name}}</p>
+                            <p class="note-thank-you">{{storeLocation.addressLine1}}</p>
+                            <p class="note-thank-you">{{storeLocation.addressLine2}}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="opt-info">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spacing">
+                    <mat-checkbox class="example-margin" (change)="onCheckboxChange1($event)">
+                        <span class="mandatory-color">*</span> I have read and agree to the <a href="https://www.samsung.com/sg/info/privacy/"
+                            target="_blank">Samsung Privacy Policy</a>
+                    </mat-checkbox>
+                    <mat-checkbox class="example-margin" (change)="onCheckboxChange2($event)"> I would also like to receive information about
+                        products, services, promotions and marketing communications of Samsung and/or its partners. 
+                    </mat-checkbox>
+
+                    <p>Fields marked with an asterisk(*) are mandatory.</p>
+                </div>
+
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spacing">
+                        <mat-checkbox class="example-margin" (change)="onCheckboxChange2($event)">
+                            <span class="mandatory-color">*</span> I agree to to the <a
+                                href="https://images.samsung.com/is/content/samsung/assets/sg/galaxy-free-trial/Galaxy-Free-Trial-terms-condition.pdf"
+                                target="_blank">Terms and Conditions</a> of the SES Booking System.
+                        </mat-checkbox>
+                    </div> -->
+
+                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 spacing">
+                        <mat-checkbox class="example-margin" (change)="onCheckboxChange3($event)">
+                                I would also like to receive information about products,
+                            services, promotions and marketing communications of Samsung and/or its partners.
+                        </mat-checkbox>
+                    </div> -->
+
+                <!-- <div>
+                    <re-captcha (resolved)="resolved($event)" siteKey="{{g_captcha_key}}"
+                        [formControl]="recaptchaControl"></re-captcha>
+                    <mat-error class="form-error">{{getRecaptchaErrorMessage()}}</mat-error>
+                </div> -->
+                <br /><br />
+
+                <div class="row btn-wrap">
+                    <div type="submit" class="col-12" align="center">
+                        <button class="btn-default" mat-stroked-button type="button" (click)="submit()"
+                            [disabled]="!isConsentGiven1">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="pt-3 mt-4 text-muted border-top">
+        <div class="px-3">
+            Copyright© 1995-2024 Samsung. All rights reserved.
+        </div>
+    </footer>
+</div>

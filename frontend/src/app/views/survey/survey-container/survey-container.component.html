@@ -1,0 +1,305 @@
+<div class="banner w-100">
+    <img class="desktop w-100" src="../../../../assets/banners/banner-flip-3.jpg">
+    <img class="mobile w-100" src="../../../../assets/banners/banner-flip-3-mobile.jpg">
+</div>
+
+<div class="container" *ngIf="message === ''">
+    <div class="col-md-12 survey-header">
+        <p>Tell Us More</p>
+        <p>Fields marked with an asterisk(*) are mandatory.</p>
+    </div>
+
+    <div class="col-md-12 survey-form">
+        <form [formGroup]="surveyForm" (ngSubmit)="onSubmitSurvey()" #svForm="ngForm" id="svForm">
+            <div class="row question-container">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">1.</span> <span>How did you hear about the SES Booking System Program? <span class="required">*</span></span></label>
+                </div>
+
+                <div class="col-md-12 answer">
+                    <div class="radio-btn" *ngFor="let source of informationSourceTypes">
+                        <input type="radio"
+                            id="source_{{source.id}}"
+                            value="{{source.id}}"
+                            formControlName="informationSource"
+                            (change)="onChangeInformationSource($event)"
+                            >
+                        <span>{{source.text}}</span>
+                        <br>
+                        <input
+                            class="txtCommend"
+                            *ngIf="source.id === 20"
+                            formControlName="informationSourceComment"
+                            [readonly]="informationSource.value !== '20'"
+                            placeholder="Please specify">
+                    </div>
+
+                    <div *ngIf="informationSource.invalid && svForm.submitted"
+                            class="alert alert-danger">
+                        <div *ngIf="informationSource.errors.required">
+                            Required to choose at least one option
+                        </div>
+                    </div>
+                    <div *ngIf="svForm.submitted && surveyForm.errors?.sourceCommentInvalid" class="alert alert-danger">
+                        Please enter more details
+                    </div>
+                </div>
+            </div>
+
+            <div class="row question-container">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">2.</span> <span>How do you rate the SES Booking System program? <span class="required">*</span></span></label>
+                </div>
+
+                <div class="col-md-12 answer">
+                    <div class="sub-answer">
+                        <p class="bold">Appointment booking process</p>
+                        <label class="radio-inline radio-btn" *ngFor="let rate of programRate" class="desktop-select w-20">
+                            <input type="radio"
+                                id="bookingProcess_{{rate.id}}"
+                                value="{{rate.id}}"
+                                formControlName="bookingProcess">{{rate.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="bookingProcess">
+                            <option *ngFor="let rate of programRate"
+                                value="{{rate.id}}">{{rate.text}}</option>
+                        </select>
+                    </div>
+                    <div class="sub-answer">
+                        <p class="bold">Collection & return of device at the Samsung Experience Store</p>
+                        <label class="radio-inline radio-btn" *ngFor="let rate of programRate" class="desktop-select w-20">
+                            <input type="radio"
+                                id="experience_{{rate.id}}"
+                                value="{{rate.id}}"
+                                formControlName="experience">{{rate.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="experience">
+                            <option *ngFor="let rate of programRate"
+                                value="{{rate.id}}">{{rate.text}}</option>
+                        </select>
+                    </div>
+                    <div class="sub-answer">
+                        <p class="bold">Duration of SES Booking System</p>
+                        <label class="radio-inline radio-btn" *ngFor="let rate of programRate" class="desktop-select w-20">
+                            <input type="radio"
+                                id="trialDuration_{{rate.id}}"
+                                value="{{rate.id}}"
+                                formControlName="trialDuration">{{rate.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="trialDuration">
+                            <option *ngFor="let rate of programRate"
+                                value="{{rate.id}}">{{rate.text}}</option>
+                        </select>
+                    </div>
+                    <div class="sub-answer">
+                        <p class="bold">Customer service (e.g. knowledge on product, professionalism, etc.)</p>
+                        <label class="radio-inline radio-btn" *ngFor="let rate of programRate" class="desktop-select w-20">
+                            <input type="radio"
+                                id="customerService_{{rate.id}}"
+                                value="{{rate.id}}"
+                                formControlName="customerService">{{rate.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="customerService">
+                            <option *ngFor="let rate of programRate"
+                                value="{{rate.id}}">{{rate.text}}</option>
+                        </select>
+                    </div>
+                    <div class="sub-answer">
+                        <p class="bold">Product introduction and training</p>
+                        <label class="radio-inline radio-btn" *ngFor="let rate of programRate" class="desktop-select w-20">
+                            <input type="radio"
+                                id="introductionTraining_{{rate.id}}"
+                                value="{{rate.id}}"
+                                formControlName="introductionTraining">{{rate.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="introductionTraining">
+                            <option *ngFor="let rate of programRate"
+                                value="{{rate.id}}">{{rate.text}}</option>
+                        </select>
+                    </div>
+
+                    <div *ngIf="(bookingProcess.invalid || experience.invalid || trialDuration.invalid || customerService.invalid || introductionTraining.invalid) && svForm.submitted"
+                            class="alert alert-danger">
+                        <div *ngIf="bookingProcess.errors?.required || experience.errors?.required || trialDuration.errors?.required || customerService.errors?.required || introductionTraining.errors?.required">
+                            Required to choose at least one option per question
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row question-container">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">3.</span> <span>Would you consider buying Galaxy Z Flip3 5G?<span class="required">*</span></span></label>
+                </div>
+
+                <div class="col-md-12 answer radio-btn row">
+                  <label class="col-md-6 radio-inline answer radio-btn">
+                      <input type="radio"
+                          id="recommend_yes"
+                          [value]="true"
+                          formControlName="deviceRecommend">
+                      Yes
+                  </label>
+                  <label class="col-md-6radio-inline answer radio-btn">
+                      <input type="radio"
+                          id="recommend_no"
+                          [value]="false"
+                          formControlName="deviceRecommend">
+                      No
+                  </label>
+
+                  <div *ngIf="(deviceRecommend.value === null || deviceRecommend.value === '' )  && svForm.submitted"
+                            class="alert alert-danger">
+                        <div *ngIf="informationSource.errors.required">
+                            Required to choose at least one option
+                        </div>
+                  </div>
+              </div>
+            </div>
+
+            <div class="row question-container" *ngIf="surveyForm.value.device && surveyForm.value.device[0] === '20'">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">4.</span> <span>Could you advise some possible reasons? <span class="required">*</span></span></label>
+                </div>
+
+                <div class="col-md-12 answer">
+                    <div class="radio-btn" *ngFor="let item of advises">
+                        <input type="checkbox"
+                            #adviseCheckboxes
+                            [value]="item.id"
+                            (change)="onAdviseChange($event)">
+                        <span>{{item.text}}</span>
+                        <br>
+                        <input class="txtCommend"
+                            *ngIf="item.id === 20"
+                            [readonly]="!advise.value?.includes('20')"
+                            formControlName="adviseComment"
+                            placeholder="Please specify">
+                    </div>
+                    <div *ngIf="svForm.submitted && surveyForm.errors?.adviseInvalid" class="alert alert-danger">
+                        Required to choose at least one option
+                    </div>
+                    <div *ngIf="svForm.submitted && surveyForm.errors?.adviseCommentInvalid" class="alert alert-danger">
+                        Please enter more details
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-12 answer">
+                    <div class="radio-btn" *ngFor="let item of advises">
+                        <input type="radio"
+                            id="advise_{{item.id}}"
+                            value="{{item.id}}"
+                            formControlName="advise"
+                            (change)="onChangeAdvise($event)">
+                        <label>{{item.text}}</label>
+                        <br>
+                        <input class="txtCommend"
+                            *ngIf="item.id === 20"
+                            [readonly]="advise.value !== '20'"
+                            formControlName="adviseComment"
+                            placeholder="Please specify">
+                    </div>
+                    <div *ngIf="svForm.submitted && surveyForm.errors?.adviseInvalid" class="alert alert-danger">
+                        Required to choose at least one option
+                    </div>
+                    <div *ngIf="svForm.submitted && surveyForm.errors?.adviseCommentInvalid" class="alert alert-danger">
+                        Please enter more details
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="row question-container">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">4.</span> <span>Was the SES Booking System effective  in the following areas? (1-5 point scale, 1= Not effective at all, 5= Very effective) <span class="required">*</span></span></label>
+                </div>
+
+                <div class="col-md-12 answer">
+                    <div class="sub-answer">
+                        <p class="bold">Getting to know the phone</p>
+                        <label class="radio-inline radio-btn" *ngFor="let effective of effectives" class="desktop-select w-20">
+                            <input type="radio"
+                                id="acquainted_{{effective.id}}"
+                                value="{{effective.id}}"
+                                formControlName="acquainted">{{effective.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="acquainted">
+                            <option *ngFor="let effective of effectives"
+                                value="{{effective.id}}">{{effective.text}}</option>
+                        </select>
+                    </div>
+                    <div class="sub-answer">
+                        <p class="bold">Influencing you to buy the phone</p>
+                        <label class="radio-inline radio-btn" *ngFor="let effective of effectives" class="desktop-select w-20">
+                            <input type="radio"
+                                id="influenced_{{effective.id}}"
+                                value="{{effective.id}}"
+                                formControlName="influenced">{{effective.text}}
+                        </label>
+                        <select class="mobile-select"
+                            formControlName="influenced">
+                            <option *ngFor="let effective of effectives"
+                                value="{{effective.id}}">{{effective.text}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="(acquainted.invalid || influenced.invalid) && svForm.submitted"
+                            class="alert alert-danger">
+                        <div *ngIf="acquainted.errors?.required || influenced.errors?.required">
+                            Required to choose at least one option per question
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row question-container">
+                <div class="col-md-12 question">
+                    <label class="bold flex"><span class="number-question">5.</span> <span>Would you recommend the SES Booking System to your friends and families?</span></label>
+                </div>
+
+                <div class="col-md-12 answer radio-btn row">
+                    <label class="col-md-6 radio-inline answer radio-btn">
+                        <input type="radio"
+                            id="recommend_yes"
+                            [value]="true"
+                            formControlName="recommend">
+                        Yes
+                    </label>
+                    <label class="col-md-6radio-inline answer radio-btn">
+                        <input type="radio"
+                            id="recommend_no"
+                            [value]="false"
+                            formControlName="recommend">
+                        No
+                    </label>
+
+                    <p class="col-md-12 bold" *ngIf="surveyForm.value.recommend">Share with friends and families</p>
+                    <div class="btn-share col-md-12" *ngIf="surveyForm.value.recommend">
+                        <share-button [theme]="'default'" [button]="'facebook'"
+                            [url]="shareLink" [autoSetMeta]="false">
+                        </share-button> &nbsp;
+                        <share-button [theme]="'default'" [button]="'whatsapp'"
+                            [url]="'Try our Galaxy Z Fold2 and Z Flip 5G at no charge with the SES Booking System. Learn more at: ' + shareLink"
+                            [autoSetMeta]="false"></share-button> &nbsp;
+                        <share-button [theme]="'default'" [button]="'copy'"
+                            [url]="'Try our Galaxy Z Fold2 and Z Flip 5G at no charge with the SES Booking System. Learn more at: ' + shareLink"
+                            [autoSetMeta]="false"></share-button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 btn-submit btn-wrap">
+                <button type="submit" class="btn btn-default" form="svForm">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container" *ngIf="message !== ''">
+    <div class="col-md-12 survey-header">
+        <p>{{message}}</p>
+    </div>
+</div>

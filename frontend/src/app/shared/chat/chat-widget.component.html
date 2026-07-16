@@ -1,0 +1,80 @@
+<div class="chat-widget" [class.open]="isOpen">
+  <div class="chat-panel" [class.chat-panel-open]="isOpen" [attr.aria-hidden]="!isOpen">
+    <div class="chat-header">
+      <div class="chat-header-title">
+        <span class="bot-avatar">🤖</span>
+        <div>
+          <div class="chat-title">Bharathikannan</div>
+          <div class="chat-status"><span class="dot"></span> Online</div>
+        </div>
+      </div>
+      <button type="button" class="icon-btn" (click)="toggleOpen()" aria-label="Close chat">✕</button>
+    </div>
+
+    <div class="chat-messages" #messagesEl>
+      @if ((messages$ | async)?.length === 0) {
+        <div class="chat-bubble assistant">
+          Hi! Ask me about my skills, services, or experience.
+        </div>
+      }
+      @for (message of (messages$ | async); track message.timestamp) {
+        <div #bubbleEl class="chat-bubble" [class.assistant]="message.role === 'assistant'" [class.user]="message.role === 'user'">
+          @if (message.role === 'assistant') {
+            <div class="bubble-rich" [innerHTML]="formatMessage(message.text)"></div>
+          } @else {
+            {{ message.text }}
+          }
+        </div>
+      }
+      @if (isTyping$ | async) {
+        <div #bubbleEl class="chat-bubble assistant typing-bubble">
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+          <span class="typing-dot"></span>
+        </div>
+      }
+    </div>
+
+    <div class="chat-input">
+      <input
+        type="text"
+        placeholder="Type your question about skills or services..."
+        [(ngModel)]="draft"
+        (keydown)="onKeydown($event)"
+        [disabled]="isTyping$ | async"
+      />
+      <button
+        type="button"
+        class="send-btn"
+        [class.sending]="justSent$ | async"
+        [disabled]="isTyping$ | async"
+        (click)="send()"
+        aria-label="Send message"
+      >➤</button>
+    </div>
+  </div>
+
+  @if (showNudge$ | async) {
+    <div class="chat-nudge" (click)="toggleOpen()">
+      <button type="button" class="nudge-close" (click)="dismissNudge($event)" aria-label="Dismiss">✕</button>
+      <span class="nudge-wave">👋</span> Got questions about my skills? Ask my AI assistant!
+      <span class="nudge-tail"></span>
+    </div>
+  }
+
+  <button
+    type="button"
+    class="chat-toggle"
+    [class.is-open]="isOpen"
+    [class.attention]="!hasInteracted"
+    (click)="toggleOpen()"
+    aria-label="Toggle chat assistant"
+  >
+    @if (!hasInteracted) {
+      <span class="ping-ring"></span>
+      <span class="notify-dot"></span>
+    }
+    <span class="chat-toggle-icon">💬</span>
+    <span class="chat-toggle-icon close-icon">✕</span>
+  </button>
+</div>

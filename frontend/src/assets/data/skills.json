@@ -1,0 +1,12 @@
+[
+  { "id": "csharp", "name": "C#", "category": "Backend", "iconUrl": "assets/icons/skills/csharp.svg", "colorHex": "#9B4F96" },
+  { "id": "dotnet", "name": ".NET Core", "category": "Backend", "iconUrl": "assets/icons/skills/dotnet.svg", "colorHex": "#512BD4" },
+  { "id": "entity-framework", "name": "Entity Framework", "category": "Backend", "iconUrl": "assets/icons/skills/entity-framework.svg", "colorHex": "#1C7C54" },
+  { "id": "python", "name": "Python", "category": "Backend", "iconUrl": "assets/icons/skills/python.svg", "colorHex": "#4B8BBE" },
+  { "id": "angular", "name": "Angular", "category": "Frontend", "iconUrl": "assets/icons/skills/angular.svg", "colorHex": "#DD0031" },
+  { "id": "typescript", "name": "TypeScript", "category": "Frontend", "iconUrl": "assets/icons/skills/typescript.svg", "colorHex": "#3178C6" },
+  { "id": "sql-server", "name": "SQL Server", "category": "Database", "iconUrl": "assets/icons/skills/sql-server.svg", "colorHex": "#CC2927" },
+  { "id": "azure", "name": "Microsoft Azure", "category": "Cloud", "iconUrl": "assets/icons/skills/azure.svg", "colorHex": "#0078D4" },
+  { "id": "azure-devops", "name": "Azure DevOps", "category": "DevOps", "iconUrl": "assets/icons/skills/azure-devops.svg", "colorHex": "#0078D7" },
+  { "id": "git", "name": "Git", "category": "DevOps", "iconUrl": "assets/icons/skills/git.svg", "colorHex": "#F05032" }
+]
