@@ -14,7 +14,7 @@ permissions:
 env:
   # Azure resource name only — no dots allowed here, so drop any ".japaneast-01"
   # style region suffix that shows up in the app's hostname; that's not the resource name.
-  dev-app-name: bharathikannan-h0epbtb4h0bshhfe.japaneast-01
+  dev-app-name: bharathikannan-h0epbtb4h0bshhfe
   AZURE_WEBAPP_PACKAGE_PATH: frontend/dist
 
 jobs:
@@ -35,8 +35,6 @@ jobs:
         run: npm install -g @angular/cli
       - name: Install dependencies
         working-directory: frontend
-        # --legacy-peer-deps: @fortawesome/angular-fontawesome@0.11.1 only declares
-        # an Angular ^14 peer dep, but this project is on Angular 18.
         run: npm install --legacy-peer-deps
       - name: Point the build at the deployed backend
         working-directory: frontend
