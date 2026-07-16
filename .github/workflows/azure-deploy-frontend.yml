@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  dev-app-name: ai-manager
+  dev-app-name: bharathikannan-h0epbtb4h0bshhfe.japaneast-01
   AZURE_WEBAPP_PACKAGE_PATH: "."
 
 jobs:
