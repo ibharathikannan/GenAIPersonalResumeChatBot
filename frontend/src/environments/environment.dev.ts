@@ -12,7 +12,9 @@ export const environment = {
   test: false,
   i18nPrefix: '',
   apiUrl: 'https://sesp-booking-system-public-api.azurewebsites.net/',
-  chatApiUrl: 'https://your-chat-api-dev.azurewebsites.net',
+  // Replaced at CI build time (see .github/workflows/azure-deploy-frontend.yml)
+  // with the deployed backend App Service URL, from the BACKEND_API_URL repo variable.
+  chatApiUrl: '__BACKEND_API_URL__',
   collectionDate: new Date("2021-10-01"),
   collectionDayCount: 40,
   versions: {

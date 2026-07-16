@@ -12,17 +12,19 @@ permissions:
   contents: read
 
 env:
-  dev-app-name: bharathikannan-h0epbtb4h0bshhfe.japaneast-01
-  AZURE_WEBAPP_PACKAGE_PATH: "."
+  # Azure resource name only — no dots allowed here, so drop any ".japaneast-01"
+  # style region suffix that shows up in the app's hostname; that's not the resource name.
+  dev-app-name: bharathikannan-h0epbtb4h0bshhfe
+  AZURE_WEBAPP_PACKAGE_PATH: frontend/dist
 
 jobs:
 
   deploy_dev:
     runs-on: ubuntu-latest
-    
+
     environment:
       name: BHARATHI_DEV
-    
+
     steps:
       - uses: actions/checkout@v3
       - name: Setup Node.js and npm
@@ -32,12 +34,19 @@ jobs:
       - name: Install Angular CLI
         run: npm install -g @angular/cli
       - name: Install dependencies
-        run: npm install
+        working-directory: frontend
+        # --legacy-peer-deps: @fortawesome/angular-fontawesome@0.11.1 only declares
+        # an Angular ^14 peer dep, but this project is on Angular 18.
+        run: npm install --legacy-peer-deps
+      - name: Point the build at the deployed backend
+        working-directory: frontend
+        run: sed -i "s#__BACKEND_API_URL__#${{ vars.BACKEND_API_URL }}#" src/environments/environment.dev.ts
       - name: Build Dev
+        working-directory: frontend
         run: ng build --configuration=dev
       - name: Deploy Dev
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.dev-app-name }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: dist  
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
