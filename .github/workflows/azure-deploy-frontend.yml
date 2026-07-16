@@ -17,7 +17,7 @@ permissions:
 
 env:
   # TODO: set to the frontend Web App name you create in Azure
-  frontend-app-name: your-frontend-webapp-name
+  frontend-app-name: bharathikannan-h0epbtb4h0bshhfe.japaneast-01
   AZURE_WEBAPP_PACKAGE_PATH: frontend/dist
 
 jobs:
