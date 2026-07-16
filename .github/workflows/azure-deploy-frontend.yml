@@ -14,7 +14,7 @@ permissions:
 env:
   # Azure resource name only — no dots allowed here, so drop any ".japaneast-01"
   # style region suffix that shows up in the app's hostname; that's not the resource name.
-  dev-app-name: bharathikannan-h0epbtb4h0bshhfe
+  dev-app-name: bharathikannan-h0epbtb4h0bshhfe.japaneast-01
   AZURE_WEBAPP_PACKAGE_PATH: frontend/dist
 
 jobs:
