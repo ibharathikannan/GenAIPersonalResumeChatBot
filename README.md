@@ -1,97 +1,102 @@
-# 👕 ClothStore AI - Gen AI Powered E-Commerce
+# Personal Resume / Portfolio AI Chatbot
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
-[![Pydantic AI](https://img.shields.io/badge/Pydantic_AI-F05023?style=for-the-badge&logo=ai&logoColor=white)](https://pydantic.dev/)
+A personal portfolio site (Angular 18) with a floating AI chat widget backed by a **FastAPI** + **Pydantic AI** (Groq) assistant. The assistant answers visitor questions grounded in profile/skills/services data stored in **MongoDB**.
 
-Welcome to **ClothStore AI**! This project is a modern LLM-powered shopping experience. It features a sleek **Frontend** (Vanilla JS), a robust **FastAPI Backend**, a **MongoDB** database, and an intelligent **AI Shopping Assistant** powered by **Pydantic AI**.
+## Stack
 
----
-
-- **📦 Dynamic Catalog**: Browse and filter clothing products by category (Men, Women, Kids) and price range.
-- **🤖 AI Shopping Assistant**: A super-smart agent powered by **Pydantic AI** (Qwen-3 32B via Groq) that understands natural language queries and finds products instantly.
-- **🛒 Smart Shopping Cart**: Add items to your cart and manage them with ease.
-- **🚀 Bulk Store Generation**: Instantly populate your database with 500+ diverse demo products for testing.
-- **📜 Simple Checkout**: Place orders using just an email identifier—no complex auth required for this demo.
-- **🔭 Deep Observability**: Integrated with **Pydantic Logfire** for real-time monitoring of both the API and the AI agent.
-- **🛠️ Admin Control**: Comprehensive endpoints for full CRUD operations on product inventory.
+- **Frontend:** Angular 18, Angular Material, NgRx, SCSS (`frontend/`)
+- **Backend:** FastAPI, Pydantic AI + Groq, MongoDB (`backend/`, entry point `main.py`)
+- **Observability:** Pydantic Logfire
 
 ---
 
-## 🛠️ Technology Stack
+## Prerequisites
 
-We built this mall using the best modern materials:
-
-### Frontend (The Storefront)
-- **Native Vanilla JS** (Loads the store visually instantly)
-- **CSS** (Helps make things look pretty)
-
-### Backend (The Warehouse Manager)
-- **FastAPI** (Extremely fast Python worker that handles requests)
-- **MongoDB Atlas** (Flexible digital filing cabinets for data)
-- **Pydantic AI & Groq** (The smart brain of our AI Salesman)
-- **Pydantic Logfire** (The security camera monitoring everything inside)
+- Python 3.10+
+- Node.js 18+ and npm
+- Angular CLI (`npm install -g @angular/cli`)
+- A MongoDB connection string (e.g. MongoDB Atlas)
+- A Groq API key
 
 ---
 
-## 📖 Complete Documentation
+## 1. Backend (FastAPI) — runs on `http://localhost:8000`
 
-Want to learn how it all works? We have easy-to-read guides!
-Check the **[`docs/README.md`](./docs/README.md)** for the full table of contents, including a simple **Terminology Guide**!
-
----
-
-## 🚀 Quick Start (Running the Store)
-
-We created a simple switch to turn on the whole mall at once:
-
-1. **Prepare the Keys (Setup)**
-   - Create a `.env` file in the root directory.
-   - Add your `MONGO_URI`, `GROQ_API_KEY`, and `LOGFIRE_TOKEN`.
-   - Ensure **Python 3.10+** is installed.
-
-2. **Flick the Switch (Run Everything)**
-   ```bash
-   python main.py
-   ```
-   *This starts the server and:*
-   - Launches the FastAPI backend on `http://localhost:8000`.
-   - Automatically serves the built-in frontend.
-   - Monitors performance via Logfire.
-
----
-
-## 🏗️ Manual Tool Setup
-
-If you prefer turning things on one by one:
-
-### Start the Server
 ```bash
+# from the repo root
 python -m venv venv
-venv\Scripts\activate   # (Or source venv/bin/activate on Mac/Linux)
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Mac/Linux
+
 pip install -r requirements.txt
+```
+
+Create a `.env` file in the repo root with:
+
+```env
+MONGO_URI="<your MongoDB connection string>"
+GROQ_API_KEY="<your Groq API key>"
+LOGFIRE_API_KEY="<your Logfire token>"   # optional, for observability
+```
+
+Seed the portfolio content (profile, skills, services, education, projects) into MongoDB:
+
+```bash
+python -m backend.seed_profile
+```
+
+Start the API server:
+
+```bash
 python main.py
 ```
-*(The native Frontend is gracefully embedded directly inside the python command!)*
+
+- API base URL: `http://localhost:8000`
+- Interactive docs: `http://localhost:8000/docs`
+- Chat endpoint: `POST http://localhost:8000/chat`
 
 ---
 
-FastAPI automatically generates an interactive map for all endpoints:
-- Go to **`http://localhost:8000/docs`** to test the API!
+## 2. Frontend (Angular) — runs on `http://localhost:4200`
 
-Here are the primary routes:
-| What it does | Method | Door (URL) |
-| :--- | :--- | :--- |
-| Browse/List Products | `GET` | `/products` |
-| Add a New Product | `POST` | `/products` |
-| Bulk Generate (500 Demo Items) | `POST` | `/products/bulk-generate-500` |
-| Add item to Cart | `POST` | `/cart/add` |
-| Get User's Cart | `GET` | `/cart/{email}` |
-| Place New Order | `POST` | `/orders` |
-| Talk to AI Assistant | `POST` | `/chat` |
+```bash
+cd frontend
+npm install
+npm start           # ng serve --open
+```
+
+The default dev environment (`src/environments/environment.ts`) already points at:
+
+- `apiUrl: http://localhost:9000/`
+- `chatApiUrl: http://localhost:8000`
+
+so no changes are needed as long as the backend is running on port 8000. Open `http://localhost:4200` in your browser — the chat widget will call the local FastAPI backend.
 
 ---
 
-## 📝 License
+## Running both together
 
-Distributed under the **MIT License**. Have fun building!
+Open two terminals:
+
+```bash
+# Terminal 1 — backend
+venv\Scripts\activate
+python main.py
+
+# Terminal 2 — frontend
+cd frontend
+npm start
+```
+
+Then browse to `http://localhost:4200`.
+
+---
+
+## Useful references
+
+- Full backend/frontend docs: [`docs/README.md`](./docs/README.md)
+- Frontend-specific notes: [`frontend/README.md`](./frontend/README.md)
+
+## License
+
+Distributed under the **MIT License**.

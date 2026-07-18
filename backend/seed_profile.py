@@ -23,17 +23,18 @@ from backend.database import (
 PROFILE = {
     "name": "Bharathikannan Ilanchezhiyan",
     "title": "Software Engineer",
-    "subtitle": "Full-Stack .NET, Angular & Azure Cloud",
+    "subtitle": "Full-Stack .NET, Angular, Azure Cloud & AI",
     "location": "Singapore",
     "tagline": (
         "10+ years designing, building, and shipping robust software — from "
-        "C#/.NET REST APIs to Angular front-ends and Azure cloud infrastructure. "
+        "C#/.NET REST APIs to Angular front-ends, Azure cloud infrastructure, "
+        "and GenAI/agentic AI systems like this chat assistant. "
         "Ask my AI assistant about my experience below."
     ),
     "avatarUrl": "assets/icons/avatar-cartoon.png",
     "speechBubbles": [
         "Hey! Ask my AI assistant about my experience.",
-        "Curious about my .NET or Azure work? Ask below!",
+        "Curious about my .NET, Azure, or AI work? Ask below!",
     ],
     "navLinks": [
         {"label": "Home", "link": "home", "icon": "house"},
