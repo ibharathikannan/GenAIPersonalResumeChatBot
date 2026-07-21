@@ -432,12 +432,16 @@
 .chip-row {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
   gap: 6px;
   flex: 1;
 }
 
 .chip {
   --tile-color: #6366f1;
+  flex: 0 0 auto;
+  white-space: nowrap;
   background: #fff;
   border: 2px solid var(--tile-color);
   color: #1f2937;
@@ -460,7 +464,31 @@
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  align-content: start;
   gap: 14px;
+  max-height: min(62vh, 640px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 4px 10px 12px 2px;
+  margin-right: -8px;
+
+  // Thin, theme-colored scrollbar (Firefox)
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 transparent;
+
+  // Thin, theme-colored scrollbar (WebKit/Chromium/Edge)
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #16a34a, #0ea5e9, #a855f7);
+    border-radius: 999px;
+  }
 }
 
 .project-card {

@@ -382,6 +382,34 @@ PROJECTS = [
         "link": "#",  # TODO: put your GitHub repo or live deployment URL here
         "icon": "rocket",
     },
+    {
+        "id": "student-performance-predictor",
+        "name": "Student Exam Performance Indicator",
+        "description": (
+            "An end-to-end ML web app predicting a student's math exam score from "
+            "demographic and academic inputs. FastAPI backend serving a scikit-learn "
+            "regression pipeline, Angular front-end, packaged as a single multi-stage "
+            "Docker image and deployed to Azure via GitHub Actions CI/CD."
+        ),
+        "technologies": ["FastAPI", "Angular", "scikit-learn", "Docker", "Azure", "GitHub Actions"],
+        "link": "https://student-performance-prediction-ml-docker-gkbseec6fhhtddbe.japaneast-01.azurewebsites.net/",
+        "icon": "rocket",
+    },
+    {
+        "id": "loan-approval-ml-system",
+        "name": "Loan Approval ML System — Two-Stage Predictor",
+        "description": (
+            "An end-to-end two-stage ML pipeline for loan approval: a scikit-learn "
+            "RandomForest classifier decides approve/reject, then a second "
+            "RandomForest regressor estimates the loan amount for approved "
+            "applicants. Streamlit front-end, containerized with Docker, built and "
+            "pushed to Azure Container Registry via GitHub Actions, and deployed to "
+            "Azure App Service for Containers."
+        ),
+        "technologies": ["Python", "scikit-learn", "Streamlit", "Docker", "Azure", "Azure Container Registry", "GitHub Actions"],
+        "link": "https://loanapprovaldetection-fddrhfcqfffsf3gc.japaneast-01.azurewebsites.net/",
+        "icon": "rocket",
+    },
     # TODO: add your other projects here, e.g.:
     # {
     #     "id": "my-project-slug",
