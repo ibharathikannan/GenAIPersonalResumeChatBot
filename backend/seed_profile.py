@@ -410,6 +410,23 @@ PROJECTS = [
         "link": "https://loanapprovaldetection-fddrhfcqfffsf3gc.japaneast-01.azurewebsites.net/",
         "icon": "rocket",
     },
+    {
+        "id": "brain-breast-cancer-detection",
+        "name": "OncoScan AI — Brain & Breast Cancer Detection",
+        "description": (
+            "A computer vision system for brain and breast cancer detection from "
+            "medical imaging, powered by a custom trigonometric-kernel CNN "
+            "(TrigConv2D) built in TensorFlow/Keras, with Grad-CAM visualizations "
+            "for explainability. FastAPI backend serves both the inference API and "
+            "an HTML/JS frontend; the model is hosted on Hugging Face Hub and "
+            "pulled at runtime. Containerized with Docker, pushed to Azure "
+            "Container Registry via GitHub Actions, and deployed to Azure App "
+            "Service for Containers."
+        ),
+        "technologies": ["Python", "TensorFlow", "Keras", "OpenCV", "FastAPI", "Docker", "Azure", "Azure Container Registry", "GitHub Actions"],
+        "link": "https://brain-breast-cancer-detection-cv-ekhwcshmdvd9e4ev.japaneast-01.azurewebsites.net/",
+        "icon": "rocket",
+    },
     # TODO: add your other projects here, e.g.:
     # {
     #     "id": "my-project-slug",
