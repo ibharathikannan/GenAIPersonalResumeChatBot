@@ -24,7 +24,7 @@ load_dotenv()
 
 router = APIRouter(prefix="/chat", tags=["Chatbot"])
 
-agent = Agent("groq:openai/gpt-oss-safeguard-20b")
+agent = Agent("groq:llama-3.3-70b-versatile")
 
 
 @agent.system_prompt
